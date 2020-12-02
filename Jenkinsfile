@@ -1,0 +1,15 @@
+pipeline {
+    agent {label 'jenkins-slave'}
+    stages {
+        stage('build') {
+            steps {
+                sh 'whoami'
+                sh 'pwd'
+                sh 'pkill java'
+                sh 'git clone https://github.com/daniyalAhmed-code/fileDeploy.git'
+                sh 'mv fileDeploy/testFile .'
+                sh 'aws ssm send-command --document-name "AWS-RunShellScript" --targets "Key=InstanceIds,Values=i-0c19c8f41cf290671" --cli-input-json file://fileDeploy.json'
+        }
+    }
+}
+}
