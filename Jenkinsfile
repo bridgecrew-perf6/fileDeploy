@@ -7,6 +7,9 @@ pipeline {
                 sh 'pwd'
                 sh 'pkill java'
                 sh 'ls -la'
+                sh  'touch test.txt'
+                sh 'scp test.txt jenkins-master.personal:~'
+                
                 sh 'cat testScript.sh | ssh jenkins-master.personal /bin/bash'
                 //sh 'git clone https://github.com/daniyalAhmed-code/fileDeploy.git'
                 //sh 'mv fileDeploy/testFile.json .'
