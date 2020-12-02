@@ -6,7 +6,7 @@ pipeline {
                 sh 'whoami'
                 sh 'pwd'
                 sh 'pkill java'
-                sh 'sh testScript.sh | ssh e2-user@i-0c19c8f41cf290671'
+                sh 'testScript.sh | ssh e2-user@i-0c19c8f41cf290671'
                 //sh 'git clone https://github.com/daniyalAhmed-code/fileDeploy.git'
                 //sh 'mv fileDeploy/testFile.json .'
                 //sh 'ssh ec2-user@i-0c19c8f41cf290671 ls -la'
