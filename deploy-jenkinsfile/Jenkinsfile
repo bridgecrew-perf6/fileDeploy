@@ -30,7 +30,7 @@ pipeline {
                 
                 //sh 'sleep 20s'
                 
-                sh 'cat deploy-jenkinsfile/testScript.sh backend | ssh jenkins-master.personal /bin/bash'
+                sh 'cat deploy-jenkinsfile/testScript.sh APPLICATION=backend | ssh jenkins-master.personal /bin/bash'
 
     }            }
 
