@@ -26,6 +26,8 @@ pipeline {
                 
                 sh ' sed -i s/{BuildNumber}/${BUILD_NUMBER}/g deploy-jenkinsfile/java-webapp.service'
 
+                sh ' sed -i s/{APPLICATION}/backend/g deploy-jenkinsfile/testScript.sh'
+
                 sh 'scp deploy-jenkinsfile/java-webapp.service jenkins-master.personal:~'
                 
                 sh 'sleep 20s'
