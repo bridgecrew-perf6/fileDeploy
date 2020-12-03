@@ -28,7 +28,7 @@ pipeline {
 
                 //sh 'scp deploy-jenkinsfile/java-webapp.service jenkins-master.personal:~'
                 
-                //sh 'sleep 20s'
+                sh 'sleep 20s'
                 
                 sh 'cat deploy-jenkinsfile/testScript.sh  | ssh jenkins-master.personal /bin/bash'
 
