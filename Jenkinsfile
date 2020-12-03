@@ -38,31 +38,14 @@ pipeline {
                                                 '''
                                         ]
                                     ]
-                                ],
-                                [$class: 'CascadeChoiceParameter', 
-                                    choiceType: 'PT_SINGLE_SELECT', 
-                                    description: 'Select the AMI from the Dropdown List',
-                                    name: 'AMI List', 
-                                    referencedParameters: 'Env', 
-                                    script: 
-                                        [$class: 'GroovyScript', 
-                                        fallbackScript: [
-                                                classpath: [], 
-                                                sandbox: false, 
-                                                script: "return['Could not get Environment from Env Param']"
-                                                ], 
-                                        script: [
-                                                classpath: [], 
-                                                sandbox: false, 
-                                                script: 
-                                                    " return[ENV] "   
-                                        ] 
-                                    ]
                                 ]
-                            ])
+                           ])
                         ])
                     }
                 }
             }
-        }   
+        }
+    parameters {
+        string(name: 'PERSON', defaultValue: 'Mr Jenkins', description: 'Who should I say hello to?')
+    }
 }
