@@ -12,6 +12,8 @@ pipeline {
 
                 sh 'pwd'
                 
+                sh 'ls'
+
                 sh 'pkill java'
 
                 sh 'echo ${BUILD_NUMBER}'                
