@@ -22,7 +22,7 @@ pipeline {
 
                sh 'scp test.txt jenkins-master.personal:~'
 
-                sh 'cat testScript.sh ${BUILD_NUMBER} | ssh jenkins-master.personal /bin/bash'
+                sh 'echo testScript.sh ${BUILD_NUMBER} | ssh jenkins-master.personal /bin/bash'
                 
             }
 
