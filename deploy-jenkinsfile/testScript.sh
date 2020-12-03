@@ -1,6 +1,6 @@
 #!/bin/bash
 set +x
-
+APPLICATION=$1
 
 if [[ $APPLICATION -eq 'frontend' ]]
 then
