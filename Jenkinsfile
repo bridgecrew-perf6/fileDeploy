@@ -1,51 +1,32 @@
 pipeline {
-    agent any
 
-        stages {
-            stage('Parameters'){
-                steps {
-                    script {
-                    properties([
-                            parameters([
-                                [$class: 'ChoiceParameter', 
-                                    choiceType: 'PT_SINGLE_SELECT', 
-                                    description: 'Select the Environemnt from the Dropdown List', 
-                                    filterLength: 1, 
-                                    filterable: false, 
-                                    name: 'Env', 
-                                    script: [
-                                        $class: 'GroovyScript', 
-                                        fallbackScript: [
-                                            classpath: [], 
-                                            sandbox: false, 
-                                            script: 
-                                                "return['Could not get The environemnts']"
-                                        ], 
-                                        script: [
-                                            classpath: [], 
-                                            sandbox: false, 
-                                            script: '''
-                                                def builds = []
-                                                def job = jenkins.model.Jenkins.instance.getItem('test-jenkins')
-                                                job.builds.each {
-                                                def build = it
-                                                if (it.getResult().toString().equals("SUCCESS")) {
-                                                it.badgeActions.each {
-                                                builds.add(build.displayName[1..-1])
-                                                }
-                                                }
-                                                }
-                                                builds.unique(); 
-                                                '''
-                                        ]
-                                    ]
-                                ],
-                                [ string(name: 'PERSON', defaultValue: 'Mr Jenkins', description: 'Who should I say hello to?')]
-                           ])
-                        ])
-                    }
-                }
-            }
-        }
+    agent {label 'jenkins-slave'}
+
+    stages {
+
+        stage('build') {
+
+            steps {
+
+                sh 'whoami'
+
+                sh 'pwd'
+
+                sh 'pkill java'
+
+                sh 'echo ${BUILD_NUMBER}'                
+//                sh 'ls -la'
     
+//                sh  'touch test.txt'
+
+//                sh 'scp test.txt jenkins-master.personal:~'
+
+//                sh 'cat testScript.sh | ssh jenkins-master.personal /bin/bash'
+                
+            }
+
+    }
+
+}
+
 }
