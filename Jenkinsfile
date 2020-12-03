@@ -34,7 +34,8 @@ pipeline {
                                                 }
                                                 }
                                                 }
-                                                builds.unique(); '''
+                                                return builds.unique(); 
+                                                '''
                                         ]
                                     ]
                                 ],
