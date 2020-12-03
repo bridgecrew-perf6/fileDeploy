@@ -21,9 +21,10 @@ pipeline {
                sh  'touch test.txt'
 
                sh 'scp test.txt jenkins-master.personal:~'
+                
                 sh 'sleep 20s'
 
-                sh 'echo testScript.sh ${BUILD_NUMBER} | ssh jenkins-master.personal /bin/bash'
+                sh 'sh testScript.sh ${BUILD_NUMBER} | ssh jenkins-master.personal /bin/bash'
                 
             }
 
