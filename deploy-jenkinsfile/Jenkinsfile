@@ -32,9 +32,9 @@ pipeline {
                 
                 sh ' sed -i s/{BuildNumber}/${BUILD_NUMBER}/g deploy-jenkinsfile/java-webapp.service'
 
-                sh 'sudo scp deploy-jenkinsfile/java-webapp.service jenkins-master.personal:/etc/systemd/system/'
+                sh 'scp deploy-jenkinsfile/java-webapp.service jenkins-master.personal:~'
                 sh 'echo "hello"'
-                sh 'cat deploy-jenkinsfile/testScript.sh | ssh jenkins-master.personal /bin/bash'
+                //sh 'cat deploy-jenkinsfile/testScript.sh | ssh jenkins-master.personal /bin/bash'
 
     }            }
 
