@@ -1,6 +1,7 @@
 #!/bin/bash
 set +x
-
+APPLIACTION={APPLICATION_NAME}
+echo "$APPLIACTION"
 if [[ $APPLICATION -eq 'frontend' ]]
 then
   curl -sSf -u admin:{Token} -O 'http://artifactory.eurustechnologies.info/artifactory/docker-maven/my-app-1.0-SNAPSHOT.{BuildNumber}.jar'
@@ -11,7 +12,7 @@ else
   echo "no argument passed"
 fi
 
-sudo cp java-webapp.service /etc/systemd/system/
-sudo systemctl restart httpd
-sudo systemctl daemon-reload
+# sudo cp java-webapp.service /etc/systemd/system/
+# sudo systemctl restart httpd
+# sudo systemctl daemon-reload
 
