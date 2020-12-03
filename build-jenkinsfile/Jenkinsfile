@@ -11,8 +11,8 @@ pipeline {
         stage('Build') {
             steps {
                 //sh 'mvn clean install -Dv=${BUILD_NUMBER} -Dartifactory.publish.artifacts=true -Dartifactory.publish.buildInfo=true'
-                sh 'mvn clean package'
-                //sh 'mvn -B -DskipTests clean package'
+                //sh 'mvn clean package'
+                sh 'mvn -B -DskipTests clean package'
             }
         }
         stage('Test') {
