@@ -1,3 +1,3 @@
 #!/bin/bash
 
-echo 'http://artifactory.eurustechnologies.info/artifactory/docker-eurus/spring-boot-hello-world-1.0.0-SNAPSHOT.$1.jar'
+echo 'http://artifactory.eurustechnologies.info/artifactory/docker-eurus/spring-boot-hello-world-1.0.0-SNAPSHOT.build_number.jar'
