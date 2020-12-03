@@ -1,10 +1,7 @@
 pipeline {
 
     agent {label 'jenkins-slave'}
-    environment { 
-        My_Cred= credentials('Token')
-    }
-    }
+   
     stages {
 
         stage('build') {
