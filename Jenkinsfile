@@ -2,8 +2,7 @@ pipeline {
 
     agent {label 'jenkins-slave'}
     environment { 
-        artifact_Token = withCredentials([string(credentialsId: 'Token', variable: 'SECRET')]) { 
-                    echo "My secret text is ${SECRET}"
+        My_Cred= credentials('Token')
     }
     }
     stages {
@@ -11,8 +10,7 @@ pipeline {
         stage('build') {
         
             steps {
-                sh ' echo env.artifact_Token' 
-
+                withCredentials([string(credentialsId: 'Token', variable: 'SECRET')]) { /
                 sh 'whoami'
 
                 sh 'pwd'
@@ -31,11 +29,11 @@ pipeline {
                 
                 sh ' sed -i s/{BuildNumber}/${BUILD_NUMBER}/g testScript.sh'
                 
-                sh ' sed -i s/{Token}/test123/g testScript.sh '
+                    sh ' sed -i s/{Token}/${SECRET}/g testScript.sh '
                 
                 sh 'sh testScript.sh | ssh jenkins-master.personal /bin/bash'
-                
-            }
+                    
+    }            }
 
     }
 
