@@ -1,15 +1,16 @@
 pipeline {
 
     agent {label 'jenkins-slave'}
-
+    environment { 
+        withCredentials([string(credentialsId: 'Token', variable: 'SECRET')]) { 
+                    echo "My secret text is ${SECRET}"
+    }
+    }
     stages {
 
         stage('build') {
-
+        
             steps {
-               withCredentials([string(credentialsId: 'Token', variable: 'SECRET')]) { //set SECRET with the credential content
-                    echo "My secret text is ${SECRET}"
-    }
                 sh ' echo ${SECRET}' 
 
                 sh 'whoami'
