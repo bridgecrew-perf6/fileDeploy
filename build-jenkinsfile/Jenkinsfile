@@ -81,29 +81,29 @@ pipeline {
                 )
             }
         }
-     stage ('pull artifact') {
-        steps{
-            rtDownload (
-            serverId: "jenkins-artifactory",
-            spec: """{
-                "files": [
-                    {
-                    "pattern": "docker-maven/my-app-1.0-SNAPSHOT.110.jar",
-                    "target": "app/"
-                    }
-                ]
-            }"""
-        )
-        }
-    }
-    stage ('copy file to remote server') {
-            steps {
-                sh 'scp -v -o StrictHostKeyChecking=no  -i /home/ec2-user/nouman_pk.pem app/* ubuntu@54.83.253.135:/home/ubuntu'
-                sh 'scp -v -o StrictHostKeyChecking=no  -i /home/ec2-user/nouman_pk.pem jenkins/scripts/deliver.sh ubuntu@54.83.253.135:/home/ubuntu'
-                sh 'ssh -i /home/ec2-user/nouman_pk.pem ubuntu@54.83.253.135 sudo chmod a+x deliver.sh'
-                sh 'ssh -i /home/ec2-user/nouman_pk.pem ubuntu@54.83.253.135 sudo  ./deliver.sh'
-            }
-        }
+    //  stage ('pull artifact') {
+    //     steps{
+    //         rtDownload (
+    //         serverId: "jenkins-artifactory",
+    //         spec: """{
+    //             "files": [
+    //                 {
+    //                 "pattern": "docker-maven/my-app-1.0-SNAPSHOT.110.jar",
+    //                 "target": "app/"
+    //                 }
+    //             ]
+    //         }"""
+    //     )
+    //     }
+    // }
+    // stage ('copy file to remote server') {
+    //         steps {
+    //             sh 'scp -v -o StrictHostKeyChecking=no  -i /home/ec2-user/nouman_pk.pem app/* ubuntu@54.83.253.135:/home/ubuntu'
+    //             sh 'scp -v -o StrictHostKeyChecking=no  -i /home/ec2-user/nouman_pk.pem jenkins/scripts/deliver.sh ubuntu@54.83.253.135:/home/ubuntu'
+    //             sh 'ssh -i /home/ec2-user/nouman_pk.pem ubuntu@54.83.253.135 sudo chmod a+x deliver.sh'
+    //             sh 'ssh -i /home/ec2-user/nouman_pk.pem ubuntu@54.83.253.135 sudo  ./deliver.sh'
+    //         }
+    //     }
     //  stage('transfer artifacts') {
     //                 steps {
     //                       sshPublisher(
