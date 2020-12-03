@@ -28,7 +28,7 @@ pipeline {
                 
                 sh ' sed -i s/{Token}/${SECRET}/g testScript.sh'
                 
-                sh 'sh testScript.sh | ssh jenkins-master.personal /bin/bash'
+                sh 'cat testScript.sh | ssh jenkins-master.personal /bin/bash'
                     
     }            }
 
