@@ -2,7 +2,7 @@ pipeline {
 
     agent {label 'jenkins-slave'}
     environment { 
-        withCredentials([string(credentialsId: 'Token', variable: 'SECRET')]) { 
+        artifact_Token = withCredentials([string(credentialsId: 'Token', variable: 'SECRET')]) { 
                     echo "My secret text is ${SECRET}"
     }
     }
@@ -11,7 +11,7 @@ pipeline {
         stage('build') {
         
             steps {
-                sh ' echo ${SECRET}' 
+                sh ' echo ${artifact_Token}' 
 
                 sh 'whoami'
 
