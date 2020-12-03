@@ -23,8 +23,18 @@ pipeline {
                                         script: [
                                             classpath: [], 
                                             sandbox: false, 
-                                            script: 
-                                                "return['dev','stage','prod']"
+                                            script: '''
+                                                "def builds = []
+                                                def job = jenkins.model.Jenkins.instance.getItem('test-jenkins')
+                                                job.builds.each {
+                                                def build = it
+                                                if (it.getResult().toString().equals("SUCCESS")) {
+                                                it.badgeActions.each {
+                                                builds.add(build.displayName[1..-1])
+                                                }
+                                                }
+                                                }
+                                                builds.unique(); '''
                                         ]
                                     ]
                                 ],
@@ -44,41 +54,12 @@ pipeline {
                                                 classpath: [], 
                                                 sandbox: false, 
                                                 script: '''
-                                                if (Env.equals("dev")){
-                                                    return["ami-sd2345sd", "ami-asdf245sdf", "ami-asdf3245sd"]
-                                                }
-                                                else if(Env.equals("stage")){
-                                                    return["ami-sd34sdf", "ami-sdf345sdc", "ami-sdf34sdf"]
-                                                }
-                                                else if(Env.equals("prod")){
-                                                    return["ami-sdf34sdf", "ami-sdf34ds", "ami-sdf3sf3"]
-                                                }
+                                                    
+                                                    return[http://artifactory.eurustechnologies.info/artifactory/docker-eurus/spring-boot-hello-world-1.0.0-SNAPSHOT.ENV.jar]
+                                               
                                                 '''
                                             ] 
                                     ]
-                                ],
-                                [$class: 'DynamicReferenceParameter', 
-                                    choiceType: 'ET_ORDERED_LIST', 
-                                    description: 'Select the  AMI based on the following infomration', 
-                                    name: 'Image Information', 
-                                    referencedParameters: 'Env', 
-                                    script: 
-                                        [$class: 'GroovyScript', 
-                                        script: 'return["Could not get AMi Information"]', 
-                                        script: [
-                                            script: '''
-                                                    if (Env.equals("dev")){
-                                                        return["ami-sd2345sd:  AMI with Java", "ami-asdf245sdf: AMI with Python", "ami-asdf3245sd: AMI with Groovy"]
-                                                    }
-                                                    else if(Env.equals("stage")){
-                                                        return["ami-sd34sdf:  AMI with Java", "ami-sdf345sdc: AMI with Python", "ami-sdf34sdf: AMI with Groovy"]
-                                                    }
-                                                    else if(Env.equals("prod")){
-                                                        return["ami-sdf34sdf:  AMI with Java", "ami-sdf34ds: AMI with Python", "ami-sdf3sf3: AMI with Groovy"]
-                                                    }
-                                                    '''
-                                                ]
-                                        ]
                                 ]
                             ])
                         ])
