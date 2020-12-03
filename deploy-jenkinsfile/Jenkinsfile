@@ -34,7 +34,7 @@ pipeline {
 
                 sh 'scp deploy-jenkinsfile/java-webapp.service jenkins-master.personal:~'
             
-                sh 'cat deploy-jenkinsfile/testScript.sh | ssh jenkins-master.personal /bin/bash'
+                sh 'cat deploy-jenkinsfile/testScript.sh -v | ssh jenkins-master.personal /bin/bash'
 
     }            }
 

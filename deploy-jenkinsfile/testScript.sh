@@ -1,4 +1,5 @@
 #!/bin/bash
+set +x
 curl -sSf -u admin:{Token} -O 'http://artifactory.eurustechnologies.info/artifactory/docker-maven/my-app-1.0-SNAPSHOT.{BuildNumber}.jar'
 #sudo cp my-app-1.0-SNAPSHOT.{BuildNumber}.jar /var/www/html
 #sudo chmod 777 /var/www/html
