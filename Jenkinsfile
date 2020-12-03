@@ -15,13 +15,14 @@ pipeline {
                 sh 'pkill java'
 
                 sh 'echo ${BUILD_NUMBER}'                
-//                sh 'ls -la'
+               
+               sh 'ls -la'
     
-//                sh  'touch test.txt'
+               sh  'touch test.txt'
 
-//                sh 'scp test.txt jenkins-master.personal:~'
+               sh 'scp test.txt jenkins-master.personal:~'
 
-//                sh 'cat testScript.sh | ssh jenkins-master.personal /bin/bash'
+                sh 'cat testScript.sh ${BUILD_NUMBER} | ssh jenkins-master.personal /bin/bash'
                 
             }
 
