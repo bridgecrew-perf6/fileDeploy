@@ -11,7 +11,7 @@ pipeline {
         stage('build') {
         
             steps {
-                sh ' echo ${artifact_Token}' 
+                sh ' echo env.artifact_Token' 
 
                 sh 'whoami'
 
