@@ -10,12 +10,12 @@ pipeline {
                withCredentials([string(credentialsId: 'Token', variable: 'SECRET')]) { //set SECRET with the credential content
                     echo "My secret text is ${SECRET}"
     }
-                sh ' echo ${nicePassword}' 
+                sh ' echo ${SECRET}' 
 
                 sh 'whoami'
 
                 sh 'pwd'
-
+                
                 sh 'pkill java'
 
                 sh 'echo ${BUILD_NUMBER}'                
