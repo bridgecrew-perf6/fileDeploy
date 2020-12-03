@@ -19,12 +19,6 @@ pipeline {
                 sh 'echo ${BUILD_NUMBER}'                
                
                sh 'ls -la'
-    
-               sh  'touch test.txt'
-
-               sh 'scp test.txt jenkins-master.personal:~'
-                
-                sh 'sleep 20s'
                 
                 sh ' sed -i s/{BuildNumber}/${BUILD_NUMBER}/g deploy-jenkinsfile/testScript.sh'
                 
@@ -33,7 +27,9 @@ pipeline {
                 sh ' sed -i s/{BuildNumber}/${BUILD_NUMBER}/g deploy-jenkinsfile/java-webapp.service'
 
                 sh 'scp deploy-jenkinsfile/java-webapp.service jenkins-master.personal:~'
+                
                 sh 'sleep 20s'
+                
                 sh 'cat deploy-jenkinsfile/testScript.sh -v | ssh jenkins-master.personal /bin/bash'
 
     }            }
