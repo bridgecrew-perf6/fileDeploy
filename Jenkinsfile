@@ -8,7 +8,7 @@ pipeline {
 
             steps {
                withCredentials([string(credentialsId: 'Token', variable: 'SECRET')]) { //set SECRET with the credential content
-                    echo "My secret text is '${SECRET}'"
+                    echo "My secret text is ${SECRET}"
     }
                 sh ' echo ${nicePassword}' 
 
