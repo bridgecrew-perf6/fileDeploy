@@ -54,12 +54,9 @@ pipeline {
                                         script: [
                                                 classpath: [], 
                                                 sandbox: false, 
-                                                script: '''
-                                                    
-                                                    return[ENV]
-                                               
-                                                '''
-                                            ] 
+                                                script: 
+                                                    " return[ENV] "   
+                                        ] 
                                     ]
                                 ]
                             ])
