@@ -10,7 +10,7 @@ pipeline {
         stage('build') {
         
             steps {
-                withCredentials([string(credentialsId: 'Token', variable: 'SECRET')]) { /
+                withCredentials([string(credentialsId: 'Token', variable: 'SECRET')]) { 
                 sh 'whoami'
 
                 sh 'pwd'
