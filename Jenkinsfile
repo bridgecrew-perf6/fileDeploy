@@ -23,8 +23,9 @@ pipeline {
                sh 'scp test.txt jenkins-master.personal:~'
                 
                 sh 'sleep 20s'
-
-                sh 'sh testScript.sh ${BUILD_NUMBER} | ssh jenkins-master.personal /bin/bash'
+                sh ' sed -i 's/build_number/${BUILD_NUMBER}/g' testScript.sh'
+                
+                sh 'sh testScript.sh | ssh jenkins-master.personal /bin/bash'
                 
             }
 
