@@ -7,10 +7,9 @@ pipeline {
         stage('build') {
 
             steps {
-                withCredentials([SecretText(credentialsId:'Token')]) { 
-                nicePassword= '${Token}'
-               sh ' echo ${Token} ' 
-}
+               withCredentials([string(credentialsId: 'Token', variable: 'SECRET')]) { //set SECRET with the credential content
+                    echo "My secret text is '${SECRET}'"
+    }
                 sh ' echo ${nicePassword}' 
 
                 sh 'whoami'
