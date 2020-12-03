@@ -24,7 +24,7 @@ pipeline {
                                             classpath: [], 
                                             sandbox: false, 
                                             script: '''
-                                                "def builds = []
+                                                def builds = []
                                                 def job = jenkins.model.Jenkins.instance.getItem('test-jenkins')
                                                 job.builds.each {
                                                 def build = it
