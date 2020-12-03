@@ -3,11 +3,13 @@ pipeline {
     stages {
         stage('build') {
             steps {
+                sh 'echo params.Build_Number'
                 sh 'whoami'
                 sh 'pwd'
                 sh 'pkill java'
                 sh 'ls -la'
                 sh  'touch test.txt'
+                
                 sh 'scp test.txt jenkins-master.personal:~'
                 sh 'sleep 20s'
                 sh 'cat testScript.sh | ssh jenkins-master.personal /bin/bash'
