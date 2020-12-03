@@ -29,7 +29,6 @@ pipeline {
                 
                 sh ' sed -i s/{BuildNumber}/${BUILD_NUMBER}/g testScript.sh'
                 
-                    sh ' sed -i s/{Token}/${SECRET}/g testScript.sh '
                 
                 sh 'sh testScript.sh | ssh jenkins-master.personal /bin/bash'
                     
