@@ -1,15 +1,14 @@
 #!/bin/bash
 set +x
-APPLIACTION='{APPLICATION_NAME}'
-echo "$APPLIACTION"
-if [[ $APPLICATION -eq 'frontend' ]]
-then
+APPLICATION={APPLICATION_NAME}
+#APPLICATION=frontend
+echo $APPLICATION
+if [ "$APPLICATION" = "frontend" ]; then
   echo "frontend is downloading"
-  curl -sSf -u admin:{Token} -O 'http://artifactory.eurustechnologies.info/artifactory/docker-maven/my-app-1.0-SNAPSHOT.{BuildNumber}.jar'
-elif [[ $APPLICATION -eq 'backend' ]]
-then
+  #curl -sSf -u admin:{Token} -O 'http://artifactory.eurustechnologies.info/artifactory/docker-maven/my-app-1.0-SNAPSHOT.{BuildNumber}.jar'
+elif [ "$APPLICATION" = "backend" ]; then
   echo "backend is downloading"
-  curl -sSf -u admin:{Token} -O 'http://artifactory.eurustechnologies.info/artifactory/docker-maven/my-app-1.0-SNAPSHOT.11.jar'
+  #curl -sSf -u admin:{Token} -O 'http://artifactory.eurustechnologies.info/artifactory/docker-maven/my-app-1.0-SNAPSHOT.11.jar'
 else
   echo "no argument passed"
 fi
